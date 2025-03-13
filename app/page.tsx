@@ -183,55 +183,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <Image
-                src="/logo-white.png"
-                alt="IfiaSoft Logo"
-                width={120}
-                height={120}
-                className="mb-4"
-              />
-              <p className="text-gray-400">Transforming ideas into digital reality since 2020</p>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Industries</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>Healthcare</li>
-                <li>Finance</li>
-                <li>Education</li>
-                <li>E-commerce</li>
-                <li>Manufacturing</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><Link href="/about">About Us</Link></li>
-                <li><Link href="/services">Services</Link></li>
-                <li><Link href="/portfolio">Portfolio</Link></li>
-                <li><Link href="/careers">Careers</Link></li>
-                <li><Link href="/blog">Blog</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Connect</h4>
-              <div className="flex space-x-4">
-                <Link href="https://twitter.com/ifiasoft" className="hover:text-primary">Twitter</Link>
-                <Link href="https://linkedin.com/company/ifiasoft" className="hover:text-primary">LinkedIn</Link>
-                <Link href="https://github.com/ifiasoft" className="hover:text-primary">GitHub</Link>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 IfiaSoft. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
