@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
@@ -121,12 +123,6 @@ const portfolioProjects = {
     }
   }
 };
-
-export function generateStaticParams() {
-  return Object.keys(portfolioProjects).map((id) => ({
-    id,
-  }));
-}
 
 export default function PortfolioDetail({ params }: { params: { id: string } }) {
   const project = portfolioProjects[params.id as keyof typeof portfolioProjects];

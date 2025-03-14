@@ -31,8 +31,9 @@ export function Navbar() {
             <Link href="/portfolio" className="text-gray-700 hover:text-primary">Portfolio</Link>
             <Link href="/about" className="text-gray-700 hover:text-primary">About</Link>
             <Link href="/blog" className="text-gray-700 hover:text-primary">Blog</Link>
+            <Link href="/careers" className="text-gray-700 hover:text-primary">Careers</Link>
             <Button asChild>
-              <Link href="#contact">Contact Us</Link>
+              <Link href="/contact">Contact Us</Link>
             </Button>
           </div>
 
@@ -87,12 +88,19 @@ export function Navbar() {
               >
                 Blog
               </Link>
+              <Link
+                href="/careers"
+                className="block px-3 py-2 text-gray-700 hover:text-primary"
+                onClick={() => setIsOpen(false)}
+              >
+                Careers
+              </Link>
               <Button
                 asChild
                 className="w-full mt-4"
                 onClick={() => setIsOpen(false)}
               >
-                <Link href="#contact">Contact Us</Link>
+                <Link href="/contact">Contact Us</Link>
               </Button>
             </div>
           </div>

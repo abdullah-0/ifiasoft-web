@@ -2,13 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import { Slider } from "@/components/ui/slider";
 import { Code2, Smartphone, Monitor, Gamepad, Brain, Megaphone, ArrowRight, Mail, Phone, MapPin, Star } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -106,147 +100,205 @@ const products = [
 export default function Home() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative h-[90vh] flex items-center justify-center bg-gradient-to-r from-blue-600 to-purple-600">
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 text-center text-white px-4">
-          <Image
-            src="/logo.png"
-            alt="IfiaSoft Logo"
-            width={150}
-            height={150}
-            className="mx-auto mb-8"
-          />
-          <h1 className="text-5xl font-bold mb-6">Transforming Ideas into Digital Reality</h1>
-          <p className="text-xl mb-8">Your trusted partner in software development and digital innovation</p>
-          <Button asChild size="lg">
-            <Link href="#contact">Get Started</Link>
-          </Button>
-        </div>
+      {/* Hero Slider Section */}
+      <section className="h-[90vh] relative">
+        <Slider className="w-full h-full">
+          {/* Services Slide */}
+          <div className="relative w-full h-[90vh]">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600">
+              <div className="absolute inset-0 bg-black/50" />
+              <div className="relative h-full flex items-center justify-center z-10">
+                <div className="container mx-auto px-4 text-center text-white">
+                  <Image
+                    src="/logo.png"
+                    alt="IfiaSoft Logo"
+                    width={150}
+                    height={150}
+                    className="mx-auto mb-8"
+                  />
+                  <h1 className="text-5xl font-bold mb-6">Our Services</h1>
+                  <p className="text-xl mb-8">Comprehensive software solutions for your business needs</p>
+                  <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    {services.slice(0, 3).map((service, index) => (
+                      <div key={index} className="bg-white/10 backdrop-blur-lg rounded-lg p-6">
+                        <div className="text-white">{service.icon}</div>
+                        <h3 className="text-lg font-semibold my-2">{service.title}</h3>
+                        <p className="text-sm text-white/80">{service.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <Button asChild size="lg" className="mt-8" variant="secondary">
+                    <Link href="/services">Explore All Services</Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Projects Slide */}
+          <div className="relative w-full h-[90vh]">
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-indigo-600">
+              <div className="absolute inset-0 bg-black/50" />
+              <div className="relative h-full flex items-center justify-center z-10">
+                <div className="container mx-auto px-4 text-center text-white">
+                  <h1 className="text-5xl font-bold mb-6">Featured Projects</h1>
+                  <p className="text-xl mb-8">Innovative solutions that drive business success</p>
+                  <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    {products.map((product, index) => (
+                      <div key={index} className="bg-white/10 backdrop-blur-lg rounded-lg overflow-hidden">
+                        <div className="relative h-40">
+                          <Image
+                            src={product.image}
+                            alt={product.title}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                        <div className="p-4">
+                          <h3 className="text-lg font-semibold mb-2">{product.title}</h3>
+                          <p className="text-sm text-white/80">{product.description}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <Button asChild size="lg" className="mt-8" variant="secondary">
+                    <Link href="/portfolio">View Portfolio</Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Testimonials Slide */}
+          <div className="relative w-full h-[90vh]">
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-blue-600">
+              <div className="absolute inset-0 bg-black/50" />
+              <div className="relative h-full flex items-center justify-center z-10">
+                <div className="container mx-auto px-4 text-center text-white">
+                  <h1 className="text-5xl font-bold mb-6">Client Success Stories</h1>
+                  <p className="text-xl mb-8">Hear what our clients say about working with us</p>
+                  <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    {testimonials.map((testimonial, index) => (
+                      <div key={index} className="bg-white/10 backdrop-blur-lg rounded-lg p-6">
+                        <div className="flex justify-center mb-4">
+                          {[...Array(testimonial.rating)].map((_, i) => (
+                            <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
+                          ))}
+                        </div>
+                        <blockquote className="text-sm mb-4">"{testimonial.text}"</blockquote>
+                        <div className="flex items-center justify-center">
+                          <div className="relative w-10 h-10 mr-3">
+                            <Image
+                              src={testimonial.image}
+                              alt={testimonial.author}
+                              fill
+                              className="object-cover rounded-full"
+                            />
+                          </div>
+                          <div className="text-left">
+                            <p className="font-semibold text-sm">{testimonial.author}</p>
+                            <p className="text-xs text-white/80">{testimonial.position}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <Button asChild size="lg" className="mt-8" variant="secondary">
+                    <Link href="/contact">Work With Us</Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Slider>
       </section>
 
-      {/* Services Carousel */}
+      {/* Services Section */}
       <section id="services" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-16">Our Services</h2>
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full"
-          >
-            <CarouselContent className="-ml-4">
-              {services.map((service, index) => (
-                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                  <Card className="p-6 h-full hover:shadow-lg transition-shadow">
-                    <div className="mb-4">{service.icon}</div>
-                    <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                    <p className="text-gray-600 mb-4">{service.description}</p>
-                    <Button variant="outline" asChild className="mt-auto">
-                      <Link href={service.link}>
-                        Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </Card>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <Card key={index} className="p-6 h-full hover:shadow-lg transition-shadow">
+                <div className="mb-4">{service.icon}</div>
+                <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+                <p className="text-gray-600 mb-4">{service.description}</p>
+                <Button variant="outline" asChild className="mt-auto">
+                  <Link href={service.link}>
+                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Products Carousel */}
+      {/* Products Section */}
       <section id="products" className="py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-16">Our Products</h2>
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full"
-          >
-            <CarouselContent className="-ml-4">
-              {products.map((product, index) => (
-                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                  <Card className="overflow-hidden h-full">
-                    <div className="relative h-48">
-                      <Image
-                        src={product.image}
-                        alt={product.title}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-semibold mb-2">{product.title}</h3>
-                      <p className="text-gray-600 mb-4">{product.description}</p>
-                      <ul className="space-y-2 mb-4">
-                        {product.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-center text-gray-600">
-                            <span className="text-primary mr-2">•</span>
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                      <p className="font-semibold text-primary">{product.price}</p>
-                    </div>
-                  </Card>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {products.map((product, index) => (
+              <Card key={index} className="overflow-hidden h-full">
+                <div className="relative h-48">
+                  <Image
+                    src={product.image}
+                    alt={product.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2">{product.title}</h3>
+                  <p className="text-gray-600 mb-4">{product.description}</p>
+                  <ul className="space-y-2 mb-4">
+                    {product.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center text-gray-600">
+                        <span className="text-primary mr-2">•</span>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="font-semibold text-primary">{product.price}</p>
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Testimonials Carousel */}
+      {/* Testimonials Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-16">What Our Clients Say</h2>
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full"
-          >
-            <CarouselContent className="-ml-4">
-              {testimonials.map((testimonial, index) => (
-                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                  <Card className="p-6 h-full">
-                    <div className="flex items-center mb-4">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
-                      ))}
-                    </div>
-                    <blockquote className="text-gray-600 mb-6">"{testimonial.text}"</blockquote>
-                    <div className="flex items-center">
-                      <div className="relative w-12 h-12 mr-4">
-                        <Image
-                          src={testimonial.image}
-                          alt={testimonial.author}
-                          fill
-                          className="object-cover rounded-full"
-                        />
-                      </div>
-                      <div>
-                        <p className="font-semibold">{testimonial.author}</p>
-                        <p className="text-sm text-gray-600">{testimonial.position}</p>
-                        <p className="text-sm text-primary">{testimonial.company}</p>
-                      </div>
-                    </div>
-                  </Card>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <Card key={index} className="p-6">
+                <div className="flex items-center mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <blockquote className="text-gray-600 mb-6">"{testimonial.text}"</blockquote>
+                <div className="flex items-center">
+                  <div className="relative w-12 h-12 mr-4">
+                    <Image
+                      src={testimonial.image}
+                      alt={testimonial.author}
+                      fill
+                      className="object-cover rounded-full"
+                    />
+                  </div>
+                  <div>
+                    <p className="font-semibold">{testimonial.author}</p>
+                    <p className="text-sm text-gray-600">{testimonial.position}</p>
+                    <p className="text-sm text-primary">{testimonial.company}</p>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 

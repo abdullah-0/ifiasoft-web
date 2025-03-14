@@ -4,68 +4,68 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
-import { Brain, Cpu, Database, LineChart, Network, Shield } from "lucide-react";
+import { Monitor, Cpu, Database, Settings, Shield, Zap } from "lucide-react";
 
 const technologies = [
   {
-    name: "TensorFlow",
-    description: "Open-source machine learning framework",
-    icon: Brain,
+    name: "Cross-Platform Development",
+    description: "Build once, run everywhere solutions",
+    icon: Monitor,
   },
   {
-    name: "PyTorch",
-    description: "Deep learning framework",
-    icon: Network,
-  },
-  {
-    name: "Scikit-learn",
-    description: "Machine learning library",
-    icon: LineChart,
-  },
-  {
-    name: "CUDA",
-    description: "Parallel computing platform",
+    name: "Native Performance",
+    description: "Optimized for system resources",
     icon: Cpu,
   },
   {
-    name: "Apache Spark",
-    description: "Big data processing",
+    name: "Data Management",
+    description: "Robust local data handling",
     icon: Database,
   },
   {
-    name: "MLflow",
-    description: "ML lifecycle management",
+    name: "System Integration",
+    description: "Seamless OS integration",
+    icon: Settings,
+  },
+  {
+    name: "Security",
+    description: "Enterprise-grade protection",
     icon: Shield,
   },
-];
-
-const useCases = [
   {
-    title: "Predictive Analytics",
-    description: "Forecast business trends and customer behavior using historical data and machine learning algorithms.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-  },
-  {
-    title: "Computer Vision",
-    description: "Implement image recognition and processing for automated quality control and surveillance systems.",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80",
-  },
-  {
-    title: "Natural Language Processing",
-    description: "Build chatbots and text analysis systems for improved customer service and data extraction.",
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80",
+    name: "Performance",
+    description: "Lightning-fast execution",
+    icon: Zap,
   },
 ];
 
-export default function AIServicesPage() {
+const features = [
+  {
+    title: "Business Applications",
+    description: "Custom software solutions for enterprise operations and workflow automation.",
+    image: "https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=800&q=80",
+  },
+  {
+    title: "Development Tools",
+    description: "Professional tools for developers and technical teams.",
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80",
+  },
+  {
+    title: "System Utilities",
+    description: "Specialized utilities for system maintenance and optimization.",
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
+  },
+];
+
+export default function DesktopDevelopmentPage() {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
         <div className="container mx-auto px-4 text-center text-white">
-          <h1 className="text-5xl font-bold mb-6">AI Solutions</h1>
+          <h1 className="text-5xl font-bold mb-6">Desktop Applications</h1>
           <p className="text-xl max-w-2xl mx-auto">
-            Transform your business with cutting-edge artificial intelligence and machine learning solutions.
+            Powerful, efficient desktop software solutions for modern businesses and professionals.
           </p>
         </div>
       </section>
@@ -75,29 +75,29 @@ export default function AIServicesPage() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Intelligent Solutions for Complex Problems</h2>
+              <h2 className="text-3xl font-bold mb-6">Professional Desktop Solutions</h2>
               <p className="text-gray-600 mb-6">
-                Our AI solutions leverage the latest advancements in machine learning, deep learning, and data science to help businesses automate processes, gain insights, and make better decisions.
+                We develop high-performance desktop applications that streamline workflows, enhance productivity, and deliver exceptional user experiences across all major platforms.
               </p>
               <ul className="space-y-4">
                 <li className="flex items-center">
-                  <Brain className="h-6 w-6 text-primary mr-4" />
-                  <span>Custom AI model development</span>
+                  <Monitor className="h-6 w-6 text-primary mr-4" />
+                  <span>Cross-platform compatibility</span>
                 </li>
                 <li className="flex items-center">
-                  <Network className="h-6 w-6 text-primary mr-4" />
-                  <span>Deep learning solutions</span>
+                  <Cpu className="h-6 w-6 text-primary mr-4" />
+                  <span>Native system integration</span>
                 </li>
                 <li className="flex items-center">
-                  <LineChart className="h-6 w-6 text-primary mr-4" />
-                  <span>Predictive analytics</span>
+                  <Shield className="h-6 w-6 text-primary mr-4" />
+                  <span>Enterprise-grade security</span>
                 </li>
               </ul>
             </div>
             <div className="relative h-[400px]">
               <Image
-                src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&q=80"
-                alt="AI Development"
+                src="https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=800&q=80"
+                alt="Desktop Development"
                 fill
                 className="object-cover rounded-lg"
               />
@@ -109,7 +109,7 @@ export default function AIServicesPage() {
       {/* Technologies Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Technologies We Use</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Technologies & Capabilities</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {technologies.map((tech) => {
               const Icon = tech.icon;
@@ -125,24 +125,24 @@ export default function AIServicesPage() {
         </div>
       </section>
 
-      {/* Use Cases Section */}
+      {/* Features Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Use Cases</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">What We Offer</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            {useCases.map((useCase) => (
-              <Card key={useCase.title} className="overflow-hidden">
+            {features.map((feature) => (
+              <Card key={feature.title} className="overflow-hidden">
                 <div className="relative h-48">
                   <Image
-                    src={useCase.image}
-                    alt={useCase.title}
+                    src={feature.image}
+                    alt={feature.title}
                     fill
                     className="object-cover"
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{useCase.title}</h3>
-                  <p className="text-gray-600">{useCase.description}</p>
+                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
                 </div>
               </Card>
             ))}
@@ -153,27 +153,27 @@ export default function AIServicesPage() {
       {/* Process Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Our AI Development Process</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Our Development Process</h2>
           <div className="grid md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-4">1</div>
-              <h3 className="text-xl font-semibold mb-2">Data Collection</h3>
-              <p className="text-gray-600">Gathering and preparing quality data for model training</p>
+              <h3 className="text-xl font-semibold mb-2">Requirements</h3>
+              <p className="text-gray-600">Detailed analysis and planning</p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-4">2</div>
-              <h3 className="text-xl font-semibold mb-2">Model Development</h3>
-              <p className="text-gray-600">Creating and training custom AI models</p>
+              <h3 className="text-xl font-semibold mb-2">Architecture</h3>
+              <p className="text-gray-600">System design and technology selection</p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-4">3</div>
-              <h3 className="text-xl font-semibold mb-2">Testing & Validation</h3>
-              <p className="text-gray-600">Rigorous testing to ensure accuracy and reliability</p>
+              <h3 className="text-xl font-semibold mb-2">Development</h3>
+              <p className="text-gray-600">Iterative development and testing</p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-4">4</div>
               <h3 className="text-xl font-semibold mb-2">Deployment</h3>
-              <p className="text-gray-600">Seamless integration with existing systems</p>
+              <p className="text-gray-600">Distribution and maintenance</p>
             </div>
           </div>
         </div>
@@ -182,9 +182,9 @@ export default function AIServicesPage() {
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
         <div className="container mx-auto px-4 text-center text-white">
-          <h2 className="text-3xl font-bold mb-6">Ready to Implement AI in Your Business?</h2>
+          <h2 className="text-3xl font-bold mb-6">Ready to Build Your Desktop Application?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Let's discuss how our AI solutions can help you achieve your business goals.
+            Let's discuss how we can help you create powerful desktop software for your business.
           </p>
           <Button asChild size="lg" variant="secondary">
             <Link href="/contact">Schedule a Consultation</Link>
