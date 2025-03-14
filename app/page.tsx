@@ -2,7 +2,14 @@
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Code2, Smartphone, Monitor, Gamepad, Brain, Megaphone, ArrowRight, Mail, Phone, MapPin } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Code2, Smartphone, Monitor, Gamepad, Brain, Megaphone, ArrowRight, Mail, Phone, MapPin, Star } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -45,24 +52,54 @@ const services = [
   }
 ];
 
-const portfolioProjects = [
+const testimonials = [
   {
-    title: "E-Commerce Platform",
-    image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&q=80",
-    category: "Web Development",
-    link: "/portfolio/e-commerce-platform"
+    text: "IfiaSoft transformed our business with their innovative solutions. Their team's expertise and dedication were exceptional.",
+    author: "Sarah Johnson",
+    position: "CTO, TechCorp",
+    company: "TechCorp",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&q=80",
+    rating: 5
   },
   {
-    title: "Fitness Tracking App",
-    image: "https://images.unsplash.com/photo-1576678927484-cc907957088c?w=800&q=80",
-    category: "Mobile Development",
-    link: "/portfolio/fitness-app"
+    text: "Working with IfiaSoft was a game-changer for our startup. They delivered beyond our expectations and within budget.",
+    author: "Michael Chen",
+    position: "CEO, StartupX",
+    company: "StartupX",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&q=80",
+    rating: 5
   },
   {
-    title: "AI-Powered Analytics",
+    text: "The AI solution developed by IfiaSoft increased our efficiency by 300%. They're true innovators in their field.",
+    author: "Emily Rodriguez",
+    position: "Head of Innovation, DataTech",
+    company: "DataTech",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&q=80",
+    rating: 5
+  }
+];
+
+const products = [
+  {
+    title: "CloudFlow",
+    description: "Cloud-based workflow automation platform",
+    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80",
+    features: ["Automated Workflows", "Real-time Analytics", "Team Collaboration"],
+    price: "Starting at $49/month"
+  },
+  {
+    title: "SecureGuard",
+    description: "Enterprise-grade security management system",
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
+    features: ["Threat Detection", "Access Control", "Compliance Management"],
+    price: "Starting at $199/month"
+  },
+  {
+    title: "DataInsight",
+    description: "AI-powered business analytics platform",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-    category: "AI Solutions",
-    link: "/portfolio/ai-analytics"
+    features: ["Predictive Analytics", "Custom Reports", "Data Visualization"],
+    price: "Starting at $149/month"
   }
 ];
 
@@ -88,61 +125,133 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Services Carousel */}
       <section id="services" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-16">Our Services</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <Card key={index} className="p-6 hover:shadow-lg transition-shadow">
-                <div className="mb-4">{service.icon}</div>
-                <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                <p className="text-gray-600 mb-4">{service.description}</p>
-                <Button variant="outline" asChild>
-                  <Link href={service.link}>
-                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </Card>
-            ))}
-          </div>
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4">
+              {services.map((service, index) => (
+                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <Card className="p-6 h-full hover:shadow-lg transition-shadow">
+                    <div className="mb-4">{service.icon}</div>
+                    <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+                    <p className="text-gray-600 mb-4">{service.description}</p>
+                    <Button variant="outline" asChild className="mt-auto">
+                      <Link href={service.link}>
+                        Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
       </section>
 
-      {/* Portfolio Section */}
-      <section id="portfolio" className="py-20">
+      {/* Products Carousel */}
+      <section id="products" className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-16">Our Portfolio</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {portfolioProjects.map((project, index) => (
-              <Link key={index} href={project.link} className="group">
-                <Card className="overflow-hidden">
-                  <div className="relative h-64">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <p className="text-sm text-primary mb-2">{project.category}</p>
-                    <h3 className="text-xl font-semibold">{project.title}</h3>
-                  </div>
-                </Card>
-              </Link>
-            ))}
-          </div>
-          <div className="text-center mt-12">
-            <Button asChild>
-              <Link href="/portfolio">View All Projects</Link>
-            </Button>
-          </div>
+          <h2 className="text-4xl font-bold text-center mb-16">Our Products</h2>
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4">
+              {products.map((product, index) => (
+                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <Card className="overflow-hidden h-full">
+                    <div className="relative h-48">
+                      <Image
+                        src={product.image}
+                        alt={product.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-semibold mb-2">{product.title}</h3>
+                      <p className="text-gray-600 mb-4">{product.description}</p>
+                      <ul className="space-y-2 mb-4">
+                        {product.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-center text-gray-600">
+                            <span className="text-primary mr-2">•</span>
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                      <p className="font-semibold text-primary">{product.price}</p>
+                    </div>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </div>
+      </section>
+
+      {/* Testimonials Carousel */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-16">What Our Clients Say</h2>
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4">
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <Card className="p-6 h-full">
+                    <div className="flex items-center mb-4">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
+                      ))}
+                    </div>
+                    <blockquote className="text-gray-600 mb-6">"{testimonial.text}"</blockquote>
+                    <div className="flex items-center">
+                      <div className="relative w-12 h-12 mr-4">
+                        <Image
+                          src={testimonial.image}
+                          alt={testimonial.author}
+                          fill
+                          className="object-cover rounded-full"
+                        />
+                      </div>
+                      <div>
+                        <p className="font-semibold">{testimonial.author}</p>
+                        <p className="text-sm text-gray-600">{testimonial.position}</p>
+                        <p className="text-sm text-primary">{testimonial.company}</p>
+                      </div>
+                    </div>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gray-50">
+      <section id="contact" className="py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-16">Contact Us</h2>
           <div className="grid md:grid-cols-2 gap-12">
